@@ -1,0 +1,25 @@
+[debug] [2021-02-15T11:38:51.738Z] ----------------------------------------------------------------------
+[debug] [2021-02-15T11:38:51.745Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rahul\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-02-15T11:38:51.746Z] CLI Version:   9.3.0
+[debug] [2021-02-15T11:38:51.746Z] Platform:      win32
+[debug] [2021-02-15T11:38:51.746Z] Node Version:  v14.15.1
+[debug] [2021-02-15T11:38:51.749Z] Time:          Mon Feb 15 2021 17:08:51 GMT+0530 (India Standard Time)
+[debug] [2021-02-15T11:38:51.749Z] ----------------------------------------------------------------------
+[debug] [2021-02-15T11:38:51.750Z] 
+[debug] [2021-02-15T11:38:51.778Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-15T11:38:51.780Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\React Projects\netflix-clone
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
