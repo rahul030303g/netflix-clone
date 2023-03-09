@@ -4,7 +4,6 @@ import './Row.css';
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
 
-
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 
@@ -12,8 +11,10 @@ function Row({title,fetchUrl,isLargeRow}){
 
     const [movies,setMovies] = useState([]);
     const [trailerUrl,setTrailerUrl] = useState("");
+    const [errorMessage, setErrorMessage] = React.useState("");
+   
 
-    useEffect(()=>{
+      useEffect(()=>{
         
         async function fetchData(){
             const request = await axios.get(fetchUrl);
@@ -23,6 +24,11 @@ function Row({title,fetchUrl,isLargeRow}){
         }
         fetchData();
     },[fetchUrl])
+
+      
+
+     
+    
 
     const opts = {
         height:"390",
@@ -34,15 +40,24 @@ function Row({title,fetchUrl,isLargeRow}){
     
     let handleClick = (movie)=>{
         if(trailerUrl){
+            console.log(trailerUrl,"t")
             setTrailerUrl("");
         }else{
+           
+            setErrorMessage("")
+            console.log(movie,"tt")
             movieTrailer(movie?.name || "")
             .then(url=>{
                 const urlParams = new URLSearchParams(new URL(url).search);
+                const urlOfMovie =  urlParams.get('v')
+              
+                console.log(urlOfMovie, 'url t')
                 setTrailerUrl(urlParams.get('v'));
             })
             .catch(error=>{
-                console.log(error)
+                console.log(error,"er")
+                setErrorMessage("Movie trailer not Available")
+           
             })
         }
     }
@@ -53,14 +68,24 @@ function Row({title,fetchUrl,isLargeRow}){
         <h1>{title}</h1>
             <div className="row__posters">
             {movies.map(movie=>
+              
             <img key={movie.id}
-            onClick={()=>handleClick(movie)}
+            onClick={()=>{
+                handleClick(movie)
+            }}
             className={`row__poster ${isLargeRow && "row__posterLarge"}`} src=
             {`${base_url}${isLargeRow?movie.poster_path:movie.backdrop_path}`} 
             alt={movie.name}/>
+
+            
             )}
             </div>
-            {trailerUrl && <YouTube videoId={trailerUrl} opts={opts}></YouTube>}
+            {errorMessage ?  <div class="alert alert-danger" role="alert">
+            {errorMessage}
+          </div> : null}
+            {trailerUrl ? <YouTube videoId={trailerUrl} opts={opts}></YouTube> :
+           null
+        }
         </div>
     )
 }
