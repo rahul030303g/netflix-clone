@@ -1,4 +1,4 @@
-App Url : https://netflix-clone-cae47.web.app/
+
 
 # Getting Started with Create React App
 
